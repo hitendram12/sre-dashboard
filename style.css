@@ -1,37 +1,24 @@
 body {
-    font-family: Arial;
     background: #0f172a;
     color: white;
-    margin: 0;
+    font-family: Arial;
 }
 
-header {
-    text-align: center;
-    padding: 20px;
+nav {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
     background: #1e293b;
 }
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-}
-
-.card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.green { color: #22c55e; }
-.red { color: #ef4444; }
 
 button {
     padding: 10px;
-    margin-top: 10px;
-    background: #ef4444;
-    color: white;
-    border: none;
     cursor: pointer;
+}
+
+.hidden { display: none; }
+
+canvas {
+    background: white;
+    margin: 10px 0;
 }
