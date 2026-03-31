@@ -1,0 +1,37 @@
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: #1e293b;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.green { color: #22c55e; }
+.red { color: #ef4444; }
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
