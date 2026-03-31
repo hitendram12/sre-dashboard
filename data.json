@@ -1,0 +1,15 @@
+{
+  "cpu": 65,
+  "memory": 72,
+  "disk": 80,
+  "containers": [
+    {"name": "nginx", "status": "running"},
+    {"name": "node-app", "status": "running"},
+    {"name": "mysql", "status": "stopped"}
+  ],
+  "pods": [
+    {"name": "api-pod-1", "status": "Running"},
+    {"name": "worker-pod-2", "status": "CrashLoopBackOff"}
+  ],
+  "alert": "High Memory Usage on Node-2"
+}
