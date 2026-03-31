@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SRE Dashboard | Hitendra</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .green { color: #22c55e; }
+        .red { color: #ef4444; }
+    </style>
+</head>
+
+<body>
+
+<h1>🚀 SRE Control Panel</h1>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>CPU Usage</h3>
+        <p id="cpu">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h3>Memory Usage</h3>
+        <p id="memory">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h3>Disk Usage</h3>
+        <p id="disk">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h3>Docker Containers</h3>
+        <ul id="containers"></ul>
+    </div>
+
+    <div class="card">
+        <h3>Kubernetes Pods</h3>
+        <ul id="pods"></ul>
+    </div>
+
+    <div class="card">
+        <h3>Alerts</h3>
+        <p id="alert" class="green">All systems normal</p>
+    </div>
+
+</div>
+
+<script>
+function loadData() {
+    fetch('data.json')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('cpu').innerText = data.cpu + "%";
+            document.getElementById('memory').innerText = data.memory + "%";
+            document.getElementById('disk').innerText = data.disk + "%";
+
+            let containers = "";
+            data.containers.forEach(c => {
+                containers += `<li class="${c.status === 'running' ? 'green' : 'red'}">${c.name} - ${c.status}</li>`;
+            });
+            document.getElementById('containers').innerHTML = containers;
+
+            let pods = "";
+            data.pods.forEach(p => {
+                pods += `<li class="${p.status === 'Running' ? 'green' : 'red'}">${p.name} - ${p.status}</li>`;
+            });
+            document.getElementById('pods').innerHTML = pods;
+
+            document.getElementById('alert').innerText = data.alert;
+        });
+}
+
+setInterval(loadData, 3000);
+</script>
+
+</body>
+</html>
