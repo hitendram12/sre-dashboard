@@ -1,43 +1,19 @@
-let failureMode = false;
+function showTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.add('hidden'));
+    document.getElementById(tab).classList.remove('hidden');
+}
 
-function loadData() {
+function loadPods() {
     fetch('data.json')
         .then(res => res.json())
         .then(data => {
-
-            if (failureMode) {
-                data.memory = 92;
-                data.alert = "🚨 Critical Memory Spike!";
-                data.pods[1].status = "CrashLoopBackOff";
-            }
-
-            document.getElementById('cpu').innerText = data.cpu + "%";
-            document.getElementById('memory').innerText = data.memory + "%";
-            document.getElementById('disk').innerText = data.disk + "%";
-
-            let containersHTML = "";
-            data.containers.forEach(c => {
-                containersHTML += `<li class="${c.status === 'running' ? 'green' : 'red'}">${c.name} - ${c.status}</li>`;
-            });
-            document.getElementById('containers').innerHTML = containersHTML;
-
-            let podsHTML = "";
+            let html = "";
             data.pods.forEach(p => {
-                podsHTML += `<li class="${p.status === 'Running' ? 'green' : 'red'}">${p.name} - ${p.status}</li>`;
+                html += `<li>${p.name} - ${p.status}</li>`;
             });
-            document.getElementById('pods').innerHTML = podsHTML;
-
-            document.getElementById('alert').innerText = data.alert;
+            document.getElementById('pods').innerHTML = html;
         });
 }
 
-function simulateFailure() {
-    failureMode = true;
-
-    setTimeout(() => {
-        failureMode = false;
-    }, 8000);
-}
-
-setInterval(loadData, 3000);
-loadData();
+setInterval(loadPods, 3000);
+loadPods();
