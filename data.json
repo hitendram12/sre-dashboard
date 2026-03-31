@@ -1,15 +1,8 @@
 {
-  "cpu": 55,
-  "memory": 65,
-  "disk": 70,
-  "containers": [
-    {"name": "nginx", "status": "running"},
-    {"name": "node-app", "status": "running"},
-    {"name": "mysql", "status": "running"}
-  ],
+  "cpu": 70,
+  "memory": 60,
   "pods": [
     {"name": "api-pod", "status": "Running"},
     {"name": "worker-pod", "status": "Running"}
-  ],
-  "alert": "All systems operational"
+  ]
 }
