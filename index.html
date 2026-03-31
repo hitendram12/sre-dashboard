@@ -1,54 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>SRE Dashboard | Hitendra</title>
+    <title>SRE Platform | Hitendra</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>🚀 SRE Control Panel</h1>
-    <p>Monitoring | Kubernetes | Terraform | Ansible</p>
+    <h1>🚀 SRE Platform Dashboard</h1>
 </header>
 
-<div class="grid">
+<nav>
+    <button onclick="showTab('dashboard')">Dashboard</button>
+    <button onclick="showTab('infra')">Terraform</button>
+    <button onclick="showTab('cicd')">CI/CD</button>
+    <button onclick="showTab('services')">Services</button>
+</nav>
 
-    <div class="card">
-        <h3>CPU Usage</h3>
-        <p id="cpu"></p>
-    </div>
+<!-- DASHBOARD -->
+<section id="dashboard" class="tab">
+    <h2>📊 Metrics</h2>
+    <canvas id="cpuChart"></canvas>
+    <canvas id="memoryChart"></canvas>
 
-    <div class="card">
-        <h3>Memory Usage</h3>
-        <p id="memory"></p>
-    </div>
+    <h3>Kubernetes Pods</h3>
+    <ul id="pods"></ul>
+</section>
 
-    <div class="card">
-        <h3>Disk Usage</h3>
-        <p id="disk"></p>
-    </div>
+<!-- TERRAFORM -->
+<section id="infra" class="tab hidden">
+    <h2>🌍 Infrastructure (Terraform)</h2>
+    <div id="infraView"></div>
+</section>
 
-    <div class="card">
-        <h3>Docker Containers</h3>
-        <ul id="containers"></ul>
-    </div>
+<!-- CI/CD -->
+<section id="cicd" class="tab hidden">
+    <h2>⚙️ CI/CD Pipeline</h2>
+    <div id="pipeline"></div>
+    <button onclick="runPipeline()">Run Pipeline</button>
+</section>
 
-    <div class="card">
-        <h3>Kubernetes Pods</h3>
-        <ul id="pods"></ul>
-    </div>
-
-    <div class="card">
-        <h3>Alerts</h3>
-        <p id="alert"></p>
-        <button onclick="simulateFailure()">Simulate Failure</button>
-    </div>
-
-</div>
+<!-- SERVICES -->
+<section id="services" class="tab hidden">
+    <h2>🧩 Services</h2>
+    <ul id="servicesList"></ul>
+</section>
 
 <script src="app.js"></script>
+<script src="charts.js"></script>
+<script src="terraform.js"></script>
+<script src="cicd.js"></script>
+<script src="services.js"></script>
 
 </body>
 </html>
