@@ -20,4 +20,4 @@ A dynamic SRE dashboard simulating real-world production monitoring.
 - Extendable to real APIs (Kubernetes, Prometheus)
 
 ## 🌐 Live Demo
-https://your-username.github.io/sre-dashboard/
+https://hitendram12.github.io/sre-dashboard/
